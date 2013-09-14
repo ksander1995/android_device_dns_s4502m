@@ -1,0 +1,10 @@
+/dev/block/platform/msm_sdcc.3/by-num/p16   /boot           emmc        defaults    defaults
+/dev/block/platform/msm_sdcc.3/by-num/p6    /recovery       emmc        defaults    defaults
+/dev/block/platform/msm_sdcc.3/by-num/p13   /misc           emmc        defaults    defaults
+/dev/block/platform/msm_sdcc.3/by-num/p17   /system         ext4        defaults    defaults
+/dev/block/platform/msm_sdcc.3/by-num/p18   /cache          ext4        defaults    defaults
+/dev/block/platform/msm_sdcc.3/by-num/p21   /data           ext4        defaults    defaults
+/dev/block/platform/msm_sdcc.3/by-num/p19   /FOTA           emmc        defaults    defaults
+/dev/block/platform/msm_sdcc.3/by-num/p3    /sys_boot       vfat        defaults    defaults
+/dev/block/platform/msm_sdcc.3/by-num/p20   /external_sd    vfat        defaults    defaults
+/dev/block/platform/msm_sdcc.1/by-num/p1    /storage/sdcard0    vfat        defaults    defaults
