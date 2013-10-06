@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo full_s4502m-eng
+add_lunch_combo cm_s4502m-eng
