@@ -13,9 +13,8 @@ DEVICE_PACKAGE_OVERLAYS += device/dns/s4502m/overlay
 PRODUCT_PACKAGES += \
 	gps.msm7x27a
 
-
 PRODUCT_PACKAGES += \
-	lights.msm7x27aa
+	lights.s4502m
 
 PRODUCT_PACKAGES +=\
 	power.msm7x27a

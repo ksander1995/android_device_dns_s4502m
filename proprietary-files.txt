@@ -54,7 +54,6 @@ lib/libsc-a2xx.so
 # Bluetooth
 bin/abtfilt
 bin/hci_qcomm_init
-lib/libnl_2.so
 lib/liballjoyn.so
 
 # Camera
