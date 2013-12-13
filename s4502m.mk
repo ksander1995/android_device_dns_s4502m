@@ -30,6 +30,9 @@ PRODUCT_PACKAGES += \
 	libOmxCore \
 	libstagefrighthw
 
+PRODUCT_PACKAGES +=\
+	Torch \
+	telephony-msim
 
 LOCAL_PATH := device/dns/s4502m
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -42,15 +45,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-	device/dns/s4502m/recovery/sbin/rmt_storage_recovery:recovery/root/sbin/rmt_storage_recovery \
-	device/dns/s4502m/recovery/sbin/charger:recovery/root/sbin/charger
+	$(call find-copy-subdir-files,*,device/dns/s4502m/ramdisk,root)
 
 PRODUCT_COPY_FILES += \
-	device/dns/s4502m/ramdisk/fstab.qcom:root/fstab.qcom \
-	device/dns/s4502m/ramdisk/init.qcom.rc:root/init.qcom.rc \
-	device/dns/s4502m/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc \
-	device/dns/s4502m/ramdisk/ueventd.qcom.rc:root/ueventd.qcom.rc
-
+	$(call find-copy-subdir-files,*,device/dns/s4502m/recovery,recovery/root)
+	
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/dns/s4502m/prebuilt/system,system)
 

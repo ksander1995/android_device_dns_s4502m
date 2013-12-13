@@ -53,8 +53,10 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 on boot
+    # CSVT from original QCOM init #
+    chmod 0777 /dev/smd11
     # Bluetooth
-
+    
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -71,6 +73,8 @@ on boot
     chmod 2770 /dev/socket/qmux_audio
     mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
     chmod 2770 /dev/socket/qmux_bluetooth
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+    chmod 2770 /dev/socket/qmux_gps
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
@@ -212,21 +216,15 @@ service iprelease_wlan0 /system/bin/dhcpcd -k
     disabled
     oneshot
 
-service ril-daemon1 /system/bin/rild -c 1
+servie atfwd /system/bin/ATFWD-daemon
     class late_start
+    user system
+    group system radio
+    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD restarted"
+
+service ril-daemon1 /system/bin/rild -c 1
+    class main
     socket rild1 stream 660 root radio
     socket rild-debug1 stream 660 radio system
     user root
-    disabled
-    group radio cache inet misc audio sdcard_rw qcom_oncrpc diag
-
-on property:ro.multi.rild=true
-    start ril-daemon1
-
-
-
-
-
-
-
-
+    group radio cache inet misc audio sdcard_r sdcard_rw qcom_oncrpc diag qcom_diag log
